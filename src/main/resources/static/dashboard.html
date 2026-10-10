@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — NEXUS</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-symbol">N</div>
+        <span>NEXUS</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/dashboard.html" class="nav-link active">Dashboard</a></li>
+        <li><a href="/discover.html" class="nav-link">Discover</a></li>
+        <li><a href="/projects.html" class="nav-link">Projects</a></li>
+        <li><a href="/circles.html" class="nav-link">Build Circles</a></li>
+        <li><a href="/bounties.html" class="nav-link">Bounties</a></li>
+      </ul>
+
+      <div id="nav-auth" class="nav-auth"></div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-bottom: 5rem;">
+    <!-- Profile Header Card -->
+    <div class="page-header">
+      <div class="card" style="padding: 2rem;" id="profile-header-card">
+        <div style="text-align: center; padding: 2rem;">
+          <span style="color: var(--indigo); font-weight: 600;">Loading builder profile...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Activity Tracking Summary Cards -->
+    <section style="margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">STUDENT ACTIVITY METRICS</span>
+          <h3 style="font-size: 1.25rem;">Activity & Contributions</h3>
+        </div>
+      </div>
+      <div id="activity-summary-grid" class="activity-stats-grid">
+        <!-- Rendered by dashboard.js -->
+      </div>
+    </section>
+
+    <!-- Activity Trends & Breakdown Grid -->
+    <section class="analytics-grid">
+      <!-- Line Chart -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div>
+            <span class="eyebrow" style="margin-bottom: 0.25rem;">ENGAGEMENT TRENDS</span>
+            <h3 style="font-size: 1.2rem;">Activity Over Time</h3>
+          </div>
+          <div class="range-pills" id="trend-range-selector">
+            <button class="range-pill active" onclick="setTrendRange('WEEKLY')">Weekly (7d)</button>
+            <button class="range-pill" onclick="setTrendRange('MONTHLY')">Monthly (30d)</button>
+            <button class="range-pill" onclick="setTrendRange('YEARLY')">Yearly (12mo)</button>
+          </div>
+        </div>
+        <div class="svg-chart-container" id="trend-chart-container">
+          <div class="chart-tooltip" id="chart-tooltip"></div>
+          <svg id="trend-svg" class="chart-svg"></svg>
+        </div>
+      </div>
+
+      <!-- Category Breakdown -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div>
+            <span class="eyebrow" style="margin-bottom: 0.25rem;">CATEGORIES</span>
+            <h3 style="font-size: 1.2rem;">Activity Breakdown</h3>
+          </div>
+        </div>
+        <div id="breakdown-container" class="breakdown-list">
+          <!-- Rendered by dashboard.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic & Professional Achievements Section -->
+    <section style="margin-bottom: 2.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">CREDENTIALS & HONORS</span>
+          <h3 style="font-size: 1.25rem;">Academic & Professional Achievements</h3>
+        </div>
+        <button onclick="openAddAchievementModal()" class="btn btn-primary btn-sm">+ Add Achievement</button>
+      </div>
+      <div id="achievements-container" class="achievements-grid">
+        <!-- Rendered by dashboard.js -->
+      </div>
+    </section>
+
+    <!-- Recent Activity Timeline Section -->
+    <section style="margin-bottom: 2.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">ACTIVITY FEED</span>
+          <h3 style="font-size: 1.25rem;">Recent Student Activity</h3>
+        </div>
+      </div>
+      <div id="recent-activity-container" class="activity-timeline">
+        <!-- Rendered by dashboard.js -->
+      </div>
+    </section>
+
+    <!-- Skill DNA Signature Section -->
+    <section class="card" style="padding: 2rem; margin-bottom: 2.5rem;" id="skill-dna-section">
+      <!-- Injected by dashboard.js -->
+    </section>
+
+    <!-- Incoming Requests (Action Center) -->
+    <section style="margin-bottom: 2.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">INBOX</span>
+          <h3 style="font-size: 1.25rem;">Collaboration & Connection Requests</h3>
+        </div>
+      </div>
+      <div id="incoming-requests-container">
+        <!-- Injected by dashboard.js -->
+      </div>
+    </section>
+
+    <!-- My Projects Section -->
+    <section style="margin-bottom: 2.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">PORTFOLIO</span>
+          <h3 style="font-size: 1.25rem;">My Projects</h3>
+        </div>
+        <a href="/projects.html?action=new" class="btn btn-primary btn-sm">+ New Project</a>
+      </div>
+      <div id="my-projects-container"></div>
+    </section>
+
+    <!-- My Build Circles Section -->
+    <section style="margin-bottom: 2.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">SQUADS</span>
+          <h3 style="font-size: 1.25rem;">My Build Circles</h3>
+        </div>
+        <a href="/circles.html?action=new" class="btn btn-primary btn-sm">+ Create Circle</a>
+      </div>
+      <div id="my-circles-container"></div>
+    </section>
+
+    <!-- My Skill Bounties -->
+    <section style="margin-bottom: 2.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">CHALLENGES</span>
+          <h3 style="font-size: 1.25rem;">My Skill Bounties</h3>
+        </div>
+        <a href="/bounties.html?action=new" class="btn btn-primary btn-sm">+ Post Bounty</a>
+      </div>
+      <div id="my-bounties-container"></div>
+    </section>
+  </main>
+
+  <!-- Edit Profile Modal -->
+  <div id="modal-edit-profile" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 1.35rem;">Edit Profile</h3>
+        <button class="btn-close" onclick="closeEditProfileModal()">×</button>
+      </div>
+      <form id="form-edit-profile" onsubmit="handleProfileUpdate(event)">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="edit-fullName" class="form-control" required />
+        </div>
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">College / University</label>
+            <input type="text" id="edit-college" class="form-control" placeholder="IIT Bombay, COEP, BITS Pilani, etc." required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Study Year</label>
+            <select id="edit-studyYear" class="form-control">
+              <option value="Year 1">Year 1</option>
+              <option value="Year 2">Year 2</option>
+              <option value="Year 3">Year 3</option>
+              <option value="Year 4">Year 4</option>
+              <option value="Postgraduate">Postgraduate</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Degree or Major</label>
+          <input type="text" id="edit-degree" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Bio</label>
+          <textarea id="edit-bio" class="form-control" rows="3"></textarea>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">GitHub URL</label>
+            <input type="url" id="edit-githubUrl" class="form-control" placeholder="https://github.com/..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label">LinkedIn URL</label>
+            <input type="url" id="edit-linkedinUrl" class="form-control" placeholder="https://linkedin.com/in/..." />
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+          <button type="button" onclick="closeEditProfileModal()" class="btn btn-secondary btn-sm">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Skill Modal -->
+  <div id="modal-add-skill" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 1.35rem;">Add Skill to DNA</h3>
+        <button class="btn-close" onclick="closeAddSkillModal()">×</button>
+      </div>
+      <form id="form-add-skill" onsubmit="handleAddSkill(event)">
+        <div class="form-group">
+          <label class="form-label">Skill or Technology Name</label>
+          <input type="text" id="new-skill-name" class="form-control" placeholder="e.g. React, Docker, Spring Boot..." required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="new-skill-category" class="form-control">
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            <option value="Data and AI">Data and AI</option>
+            <option value="Design">Design</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Mobile">Mobile</option>
+            <option value="General">General</option>
+          </select>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Skill Type</label>
+            <select id="new-skill-type" class="form-control">
+              <option value="PROFICIENT">I am proficient</option>
+              <option value="CAN_TEACH">I can teach & mentor</option>
+              <option value="WANTS_TO_LEARN">I want to learn</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Proficiency Level</label>
+            <select id="new-skill-level" class="form-control">
+              <option value="BEGINNER">Beginner</option>
+              <option value="INTERMEDIATE" selected>Intermediate</option>
+              <option value="ADVANCED">Advanced</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+          <button type="button" onclick="closeAddSkillModal()" class="btn btn-secondary btn-sm">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Add to Profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Proof of Build Update Modal -->
+  <div id="modal-proof-update" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">PROOF OF BUILD</span>
+          <h3 style="font-size: 1.35rem;" id="proof-modal-project-title">Log Progress Update</h3>
+        </div>
+        <button class="btn-close" onclick="closeProofUpdateModal()">×</button>
+      </div>
+      <form id="form-proof-update" onsubmit="handleProofSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Milestone Title</label>
+          <input type="text" id="proof-title" class="form-control" placeholder="e.g. V1 Authentication Shipped" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description of work completed</label>
+          <textarea id="proof-description" class="form-control" rows="2" placeholder="Summary of commits, features, or architectural enhancements..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Milestones Achieved</label>
+          <input type="text" id="proof-milestones" class="form-control" placeholder="e.g. Session cookies, CSRF handlers, login UI" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Challenges & Obstacles Overcome</label>
+          <input type="text" id="proof-challenges" class="form-control" placeholder="e.g. Hibernate lazy loading recursion" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Lessons Learned</label>
+          <input type="text" id="proof-lessons" class="form-control" placeholder="e.g. DTO mapping prevents unwanted entity exposures" />
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+          <button type="button" onclick="closeProofUpdateModal()" class="btn btn-secondary btn-sm">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Record Proof of Build</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add/Edit Achievement Modal -->
+  <div id="modal-achievement" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.25rem;">CREDENTIAL VERIFICATION</span>
+          <h3 style="font-size: 1.35rem;" id="achievement-modal-title">Add Academic Achievement</h3>
+        </div>
+        <button class="btn-close" onclick="closeAchievementModal()">×</button>
+      </div>
+      <form id="form-achievement" onsubmit="handleSaveAchievement(event)">
+        <input type="hidden" id="achievement-id" />
+        <div class="form-group">
+          <label class="form-label">Achievement Title *</label>
+          <input type="text" id="achievement-title" class="form-control" placeholder="e.g. 1st Place - Smart India Hackathon" required />
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="achievement-category" class="form-control" required>
+              <option value="HACKATHON">Hackathon</option>
+              <option value="CERTIFICATION">Certification</option>
+              <option value="RESEARCH">Research</option>
+              <option value="COMPETITION">Competition</option>
+              <option value="OPEN_SOURCE">Open Source</option>
+              <option value="HONOR_AWARD">Honor / Award</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Issue Date *</label>
+            <input type="date" id="achievement-date" class="form-control" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Issuing Organization *</label>
+          <input type="text" id="achievement-org" class="form-control" placeholder="e.g. IEEE, AWS, University, GitHub" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Proof / Credential URL (Optional)</label>
+          <input type="url" id="achievement-url" class="form-control" placeholder="https://..." />
+          <small style="color: var(--ink-muted); font-size: 0.775rem;">Only secure http:// or https:// URLs are accepted.</small>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description (Optional)</label>
+          <textarea id="achievement-description" class="form-control" rows="3" placeholder="Describe the achievement, project delivered, or score..."></textarea>
+        </div>
+        <div class="form-group" style="display: flex; align-items: center; gap: 0.75rem; background: var(--bg); padding: 0.85rem; border-radius: var(--radius-md);">
+          <input type="checkbox" id="achievement-is-public" checked style="width: 18px; height: 18px; accent-color: var(--indigo);" />
+          <div>
+            <label for="achievement-is-public" style="font-weight: 600; font-size: 0.875rem; cursor: pointer;">Public Visibility</label>
+            <p style="font-size: 0.775rem; color: var(--ink-secondary); margin: 0;">When enabled, this achievement is visible to other students discovering your profile.</p>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+          <button type="button" onclick="closeAchievementModal()" class="btn btn-secondary btn-sm">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm" id="btn-save-achievement">Save Achievement</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

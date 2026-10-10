@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS — Connect. Learn. Collaborate. Build.</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-symbol">N</div>
+        <span>NEXUS</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/discover.html" class="nav-link">Discover</a></li>
+        <li><a href="/projects.html" class="nav-link">Projects</a></li>
+        <li><a href="/circles.html" class="nav-link">Build Circles</a></li>
+        <li><a href="/bounties.html" class="nav-link">Bounties</a></li>
+      </ul>
+
+      <div id="nav-auth" class="nav-auth">
+        <!-- Injected by main.js -->
+        <a href="/login.html" class="btn btn-secondary btn-sm">Sign in</a>
+        <a href="/register.html" class="btn btn-primary btn-sm">Join NEXUS</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">THE STUDENT BUILDER NETWORK</span>
+          <h1 class="hero-title">Your next breakthrough starts with your people.</h1>
+          <p class="hero-subtitle">
+            Find your kind of builders. Trade skills. Rescue unfinished ideas.
+            Turn side projects into something extraordinary.
+          </p>
+          <div class="hero-actions">
+            <a href="/discover.html" class="btn btn-primary btn-lg">Find your people</a>
+            <a href="/projects.html" class="btn btn-secondary btn-lg">Explore projects</a>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: var(--ink-secondary);">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
+            <span>Active university builders collaborating across 40+ campus chapters</span>
+          </div>
+        </div>
+
+        <!-- Layered Visual Composition -->
+        <div class="hero-composition">
+          <!-- Card 1: Backend Developer -->
+          <div class="hero-card hero-card-1">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+              <div class="avatar" style="background: #625BEE;">AS</div>
+              <div>
+                <strong style="font-size: 0.95rem;">Aarav Sharma</strong>
+                <div style="font-size: 0.75rem; color: var(--ink-secondary);">IIT Bombay • CSE Year 3</div>
+              </div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem;">
+              <span class="skill-chip backend">Spring Boot</span>
+              <span class="skill-chip backend">Java</span>
+              <span class="skill-chip devops">Docker</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--ink-muted); margin-top: 0.5rem;">
+              Can teach: <span style="color: var(--teal); font-weight: 600;">Docker</span> • Wants: <span style="color: var(--indigo); font-weight: 600;">React</span>
+            </div>
+          </div>
+
+          <!-- Compatibility Indicator Pill -->
+          <div class="hero-card-compat">
+            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--lime);">94%</span>
+            <span style="font-size: 0.8rem; font-weight: 600;">Full-Stack Synergy</span>
+          </div>
+
+          <!-- Card 2: Frontend Developer + Project Snippet -->
+          <div class="hero-card hero-card-2">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+              <div class="avatar" style="background: #0D9488;">RD</div>
+              <div>
+                <strong style="font-size: 0.95rem;">Rohan Deshmukh</strong>
+                <div style="font-size: 0.75rem; color: var(--ink-secondary);">COEP Technological Univ • IT Year 2</div>
+              </div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem;">
+              <span class="skill-chip frontend">React</span>
+              <span class="skill-chip frontend">TypeScript</span>
+              <span class="skill-chip design">Figma</span>
+            </div>
+            <div style="background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.6rem; font-size: 0.75rem;">
+              <strong style="color: var(--indigo);">Current Build:</strong> EchoFlow Audio Workbench
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Community Proof Stats -->
+  <section class="container">
+    <div class="stats-bar" id="stats-bar">
+      <div class="stat-item">
+        <h3 id="stat-builders">4</h3>
+        <p>Active Student Builders</p>
+      </div>
+      <div class="stat-item">
+        <h3 id="stat-projects">2</h3>
+        <p>Projects Launched</p>
+      </div>
+      <div class="stat-item">
+        <h3 id="stat-rescues">1</h3>
+        <p>Ghost Projects Rescued</p>
+      </div>
+      <div class="stat-item">
+        <h3 id="stat-circles">1</h3>
+        <p>Build Circles Shipping</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Section -->
+  <section class="container" style="padding: 4rem 1.5rem;">
+    <div style="text-align: center; max-width: 650px; margin: 0 auto 3rem auto;">
+      <span class="eyebrow">BUILT FOR REAL COLLABORATION</span>
+      <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">More than a network. A reason to build.</h2>
+      <p style="color: var(--ink-secondary); font-size: 1.05rem;">
+        College projects shouldn't live in isolated folders. NEXUS pairs you with complementary teammates to build software that matters.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <!-- 1. Skill DNA -->
+      <div class="card">
+        <div class="card-body">
+          <div class="empty-state-icon" style="margin-bottom: 1rem;">🧬</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Skill DNA</h3>
+          <p style="color: var(--ink-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Visualize technical proficiency across Frontend, Backend, AI, Design, and DevOps without inflated claims or heavy resumes.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Project Chemistry -->
+      <div class="card">
+        <div class="card-body">
+          <div class="empty-state-icon" style="margin-bottom: 1rem;">⚡</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Project Chemistry</h3>
+          <p style="color: var(--ink-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Backend compatibility scoring that diagnoses why two developers should pair, highlighting shared stacks and reciprocal learning.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. Build Circles -->
+      <div class="card">
+        <div class="card-body">
+          <div class="empty-state-icon" style="margin-bottom: 1rem;">⭕</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Build Circles</h3>
+          <p style="color: var(--ink-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Small, capped developer squads rallied around a concrete objective with clear milestones and measurable progress.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. Skill Bounties -->
+      <div class="card">
+        <div class="card-body">
+          <div class="empty-state-icon" style="margin-bottom: 1rem;">🎯</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Skill Bounties</h3>
+          <p style="color: var(--ink-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Request targeted debugging help, paired code reviews, or architectural advice from peers without friction or paywalls.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5. Ghost Project Rescue -->
+      <div class="card" style="border: 2px solid #FCD34D;">
+        <div class="card-body">
+          <div class="empty-state-icon" style="background: #FEF3C7; color: #92400E; margin-bottom: 1rem;">🚨</div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+            <h3 style="font-size: 1.25rem;">Ghost Project Rescue</h3>
+            <span class="badge badge-rescue">Second Life</span>
+          </div>
+          <p style="color: var(--ink-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Rescue unfinished, stalled side projects. Submit blocking bottlenecks and let student contributors bring ambitious ideas to life.
+          </p>
+        </div>
+      </div>
+
+      <!-- 6. Proof of Build -->
+      <div class="card">
+        <div class="card-body">
+          <div class="empty-state-icon" style="margin-bottom: 1rem;">📦</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Proof of Build</h3>
+          <p style="color: var(--ink-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Document real progress updates, milestones achieved, obstacles solved, and engineering lessons directly in the project portfolio.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Showcase Preview -->
+  <section class="container" style="padding: 2rem 1.5rem 4rem 1.5rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="eyebrow">PORTFOLIO</span>
+        <h2 style="font-size: 2rem;">Shipped by the community</h2>
+      </div>
+      <a href="/projects.html" class="btn btn-secondary btn-sm">Browse all projects →</a>
+    </div>
+
+    <div class="grid-2" id="landing-projects-grid">
+      <!-- Injected dynamically -->
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section style="background: #FFFFFF; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 600px; margin: 0 auto 3.5rem auto;">
+        <span class="eyebrow">THE WORKFLOW</span>
+        <h2 style="font-size: 2.25rem;">How builders get things done</h2>
+      </div>
+
+      <div class="grid-3" style="text-align: center;">
+        <div>
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--indigo); color: white; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem;">1</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Define your Skill DNA</h3>
+          <p style="font-size: 0.9rem; color: var(--ink-secondary);">Pinpoint what you can build, what you can teach, and what technologies you want to learn next.</p>
+        </div>
+
+        <div>
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--indigo); color: white; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem;">2</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Discover Complementary Peers</h3>
+          <p style="font-size: 0.9rem; color: var(--ink-secondary);">Run chemistry diagnostics to match with students across campuses whose technical superpowers balance yours.</p>
+        </div>
+
+        <div>
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--indigo); color: white; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem;">3</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Ship in Build Circles</h3>
+          <p style="font-size: 0.9rem; color: var(--ink-secondary);">Join a focused team with strict milestones, resolve challenges via skill bounties, and deploy real apps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Call to Action -->
+  <section class="container" style="padding: 6rem 1.5rem; text-align: center;">
+    <div style="background: var(--ink); color: #FFFFFF; border-radius: var(--radius-xl); padding: 4rem 2rem; position: relative; overflow: hidden;">
+      <h2 style="font-size: 2.75rem; color: #FFFFFF; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Your people are building something. Find them.
+      </h2>
+      <p style="color: #94A3B8; font-size: 1.1rem; max-width: 500px; margin: 0 auto 2rem auto;">
+        Join hundreds of student developers trading knowledge, rescuing ideas, and shipping production code.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/register.html" class="btn btn-lime btn-lg">Create Builder Profile</a>
+        <a href="/discover.html" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); color: #FFFFFF; border-color: rgba(255,255,255,0.2);">Browse Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <div class="brand-symbol">N</div>
+            <span>NEXUS</span>
+          </div>
+          <p>The student developer network where ambitious builders connect, exchange skills, rescue ideas, and ship together.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="/discover.html">Discover Developers</a></li>
+            <li><a href="/projects.html">Project Showcase</a></li>
+            <li><a href="/projects.html?rescue=true">Ghost Project Rescue</a></li>
+            <li><a href="/circles.html">Build Circles</a></li>
+            <li><a href="/bounties.html">Skill Bounty Board</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Features</h4>
+          <ul class="footer-links">
+            <li><a href="/discover.html">Skill DNA Matching</a></li>
+            <li><a href="/discover.html">Project Chemistry</a></li>
+            <li><a href="/dashboard.html">Proof of Build</a></li>
+            <li><a href="/dashboard.html">Connection Hub</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul class="footer-links">
+            <li><a href="/login.html">Sign In</a></li>
+            <li><a href="/register.html">Join NEXUS</a></li>
+            <li><a href="/dashboard.html">My Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 NEXUS Developer Network. Built on Spring Boot & MySQL.</span>
+        <span>Crafted for Student Builders Worldwide</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    // Load dynamic landing statistics and featured projects
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const stats = await API.get('/api/stats/public');
+        if (stats) {
+          document.getElementById('stat-builders').textContent = stats.totalDevelopers || 0;
+          document.getElementById('stat-projects').textContent = stats.totalProjects || 0;
+          document.getElementById('stat-rescues').textContent = stats.rescueProjects || 0;
+          document.getElementById('stat-circles').textContent = stats.totalCircles || 0;
+        }
+      } catch (e) {}
+
+      try {
+        const projects = await API.get('/api/projects');
+        const grid = document.getElementById('landing-projects-grid');
+        if (grid && projects && projects.length > 0) {
+          grid.innerHTML = projects.slice(0, 2).map(p => `
+            <div class="card" onclick="window.location.href='/projects.html?id=${p.id}'" style="cursor: pointer;">
+              <div class="card-header-art ${p.rescue ? 'rescue' : ''}" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem;">
+                <span class="badge ${p.rescue ? 'badge-rescue' : 'badge-in-progress'}">
+                  ${p.rescue ? '🚨 NEEDS A SECOND LIFE' : p.status}
+                </span>
+                <span style="font-size: 0.75rem; color: var(--ink-secondary); font-weight: 600;">${escapeHtml(p.category || 'Web')}</span>
+              </div>
+              <div class="card-body">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">${escapeHtml(p.title)}</h3>
+                <p style="font-size: 0.875rem; color: var(--ink-secondary); line-height: 1.5; margin-bottom: 1rem;">${escapeHtml(p.shortDescription || '')}</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 0.75rem; font-size: 0.8rem;">
+                  <span>Built by <strong>${escapeHtml(p.creatorName)}</strong></span>
+                  <span style="color: var(--indigo); font-weight: 600;">Explore →</span>
+                </div>
+              </div>
+            </div>
+          `).join('');
+        }
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Showcase & Ghost Rescue — NEXUS</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-symbol">N</div>
+        <span>NEXUS</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="/discover.html" class="nav-link">Discover</a></li>
+        <li><a href="/projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="/circles.html" class="nav-link">Build Circles</a></li>
+        <li><a href="/bounties.html" class="nav-link">Bounties</a></li>
+      </ul>
+
+      <div id="nav-auth" class="nav-auth"></div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-bottom: 5rem;">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="eyebrow">COMMUNITY PORTFOLIO</span>
+        <h1 class="page-title">Built by students. Worth showing the world.</h1>
+        <p class="page-subtitle">
+          Explore ongoing creations, inspect Proof of Build milestones, or adopt an unfinished project needing a second life.
+        </p>
+      </div>
+      <div>
+        <button onclick="openCreateProjectModal()" class="btn btn-primary btn-md">+ Create Project</button>
+      </div>
+    </div>
+
+    <!-- Tabs: All Projects vs Ghost Project Rescue -->
+    <div style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem;">
+      <button id="tab-all" class="btn btn-primary btn-sm" onclick="setTab(null)">
+        All Projects
+      </button>
+      <button id="tab-rescue" class="btn btn-secondary btn-sm" onclick="setTab(true)" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+        <span>🚨 Ghost Project Rescue</span>
+        <span class="badge badge-rescue" style="font-size: 0.65rem;">Second Life</span>
+      </button>
+    </div>
+
+    <!-- Toolbar Filters -->
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <input type="text" id="search-query" class="input-search" placeholder="Search by title, description, or stack..." />
+
+        <select id="filter-category" class="select-filter">
+          <option value="">All Categories</option>
+          <option value="Web">Web Application</option>
+          <option value="Mobile">Mobile Application</option>
+          <option value="AI/ML">AI & Machine Learning</option>
+          <option value="Open Source">Open Source Tooling</option>
+          <option value="Cloud/DevOps">Cloud & Infrastructure</option>
+          <option value="Game Dev">Game Development</option>
+        </select>
+
+        <select id="filter-status" class="select-filter">
+          <option value="">All Statuses</option>
+          <option value="IN_PROGRESS">In Progress</option>
+          <option value="SEEKING_COLLABORATORS">Seeking Collaborators</option>
+          <option value="COMPLETED">Completed</option>
+          <option value="NEEDS_RESCUE">Needs Rescue</option>
+          <option value="IDEA">Idea Phase</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid-2" id="projects-grid">
+      <!-- Injected by projects.js -->
+    </div>
+  </main>
+
+  <!-- Project Details Modal -->
+  <div id="modal-project-details" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 720px;">
+      <div class="modal-header">
+        <span class="eyebrow" style="margin-bottom: 0;">PROJECT SPECIFICATION</span>
+        <button class="btn-close" onclick="closeProjectDetailsModal()">×</button>
+      </div>
+      <div id="project-details-content">
+        <!-- Injected by projects.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Project Modal -->
+  <div id="modal-create-project" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 640px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.35rem;">Launch / Submit Project</h3>
+        <button class="btn-close" onclick="closeCreateProjectModal()">×</button>
+      </div>
+      <form id="form-create-project" onsubmit="handleCreateProjectSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Project Title</label>
+          <input type="text" id="project-title" class="form-control" placeholder="e.g. EchoFlow, AutoGrader CLI" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Short Tagline / Summary</label>
+          <input type="text" id="project-shortDesc" class="form-control" placeholder="One sentence describing what this project accomplishes" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Detailed Description</label>
+          <textarea id="project-detailedDesc" class="form-control" rows="3" placeholder="Explain the problem, technical architecture, and roadmap..."></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Technologies (comma separated)</label>
+            <input type="text" id="project-technologies" class="form-control" placeholder="Spring Boot, React, Docker..." required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="project-category" class="form-control">
+              <option value="Web">Web</option>
+              <option value="Mobile">Mobile</option>
+              <option value="AI/ML">AI & Machine Learning</option>
+              <option value="Open Source">Open Source</option>
+              <option value="Cloud/DevOps">Cloud & DevOps</option>
+              <option value="Game Dev">Game Dev</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Project Status</label>
+            <select id="project-status" class="form-control">
+              <option value="IN_PROGRESS" selected>In Progress</option>
+              <option value="SEEKING_COLLABORATORS">Seeking Collaborators</option>
+              <option value="NEEDS_RESCUE">Needs Rescue</option>
+              <option value="IDEA">Idea Phase</option>
+              <option value="COMPLETED">Completed</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">GitHub Repository URL (optional)</label>
+            <input type="url" id="project-githubUrl" class="form-control" placeholder="https://github.com/..." />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Live Demo / Preview URL (optional)</label>
+          <input type="url" id="project-demoUrl" class="form-control" placeholder="https://..." />
+        </div>
+
+        <!-- Ghost Project Rescue Checkbox Toggle -->
+        <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+          <label style="display: flex; align-items: center; gap: 0.65rem; font-weight: 700; color: #92400E; cursor: pointer;">
+            <input type="checkbox" id="project-isRescue" onchange="toggleRescueFields()" style="width: 18px; height: 18px;" />
+            <span>Mark as Ghost Project Rescue (Needs a Second Life)</span>
+          </label>
+          <p style="font-size: 0.8rem; color: #B45309; margin-top: 0.25rem;">
+            Check this if your project is stalled or incomplete and you're looking for peer contributors to unblock it.
+          </p>
+
+          <div id="rescue-specific-fields" style="display: none; margin-top: 1rem;">
+            <div class="form-group">
+              <label class="form-label" style="color: #92400E;">What is blocking progress?</label>
+              <textarea id="project-rescueBlockers" class="form-control" rows="2" placeholder="Explain the specific technical bottleneck, missing design, or time crunch..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="color: #92400E;">Skills urgently needed</label>
+              <input type="text" id="project-rescueSkillsNeeded" class="form-control" placeholder="e.g. Docker daemon isolation, Next.js App Router, CSS animations" />
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" onclick="closeCreateProjectModal()" class="btn btn-secondary btn-sm">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Publish Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/projects.js"></script>
+</body>
+</html>

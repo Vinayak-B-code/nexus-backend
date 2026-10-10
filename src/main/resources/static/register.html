@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Community — NEXUS</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body style="background: #FFFFFF; display: flex; flex-direction: column; min-height: 100vh;">
+
+  <!-- Simple Header -->
+  <header style="padding: 1.5rem; border-bottom: 1px solid var(--border);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/index.html" class="brand">
+        <div class="brand-symbol">N</div>
+        <span>NEXUS</span>
+      </a>
+      <span style="font-size: 0.875rem; color: var(--ink-secondary);">
+        Already have a profile? <a href="/login.html" style="font-weight: 600;">Sign in</a>
+      </span>
+    </div>
+  </header>
+
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 3rem 1.5rem;">
+    <div style="max-width: 540px; width: 100%;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="eyebrow lime">STUDENT BUILDER NETWORK</span>
+        <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem;">Create your Builder Profile</h1>
+        <p style="color: var(--ink-secondary); font-size: 0.95rem;">
+          Connect with complementary peers, build side projects, and exchange skills.
+        </p>
+      </div>
+
+      <!-- Error box -->
+      <div id="auth-error" style="display: none; background: #FFF1F2; border: 1px solid #FECDD3; color: #BE123C; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.875rem; margin-bottom: 1.25rem;"></div>
+
+      <form id="form-register">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="fullName">Full Name</label>
+            <input type="text" id="fullName" class="form-control" placeholder="Aarav Sharma" required autofocus />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Student Email</label>
+            <input type="email" id="email" class="form-control" placeholder="aarav@campus.edu.in" required />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="password">Password (min 6 characters)</label>
+            <input type="password" id="password" class="form-control" placeholder="••••••••" minlength="6" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" placeholder="••••••••" minlength="6" required />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="college">College or University</label>
+            <input type="text" id="college" class="form-control" placeholder="IIT Bombay, COEP, BITS Pilani, etc." required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="studyYear">Study Year</label>
+            <select id="studyYear" class="form-control">
+              <option value="Year 1">Year 1 (Freshman)</option>
+              <option value="Year 2" selected>Year 2 (Sophomore)</option>
+              <option value="Year 3">Year 3 (Junior)</option>
+              <option value="Year 4">Year 4 (Senior)</option>
+              <option value="Postgraduate">Postgraduate / Masters</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="degree">Degree or Department</label>
+          <input type="text" id="degree" class="form-control" placeholder="Computer Science, Information Technology, AI/DS..." required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="skills">Skills & Technical Interests (comma separated)</label>
+          <input type="text" id="skills" class="form-control" placeholder="Java, Spring Boot, React, Python, Docker..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bio">Short Builder Bio</label>
+          <textarea id="bio" class="form-control" rows="3" placeholder="What are you building or interested in learning? E.g., 'Full-stack builder passionate about microservices, clean code, and cloud architectures.'" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; margin-top: 0.5rem;">
+          Join NEXUS Community
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

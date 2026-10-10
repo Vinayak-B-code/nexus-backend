@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Circles — NEXUS</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-symbol">N</div>
+        <span>NEXUS</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="/discover.html" class="nav-link">Discover</a></li>
+        <li><a href="/projects.html" class="nav-link">Projects</a></li>
+        <li><a href="/circles.html" class="nav-link active">Build Circles</a></li>
+        <li><a href="/bounties.html" class="nav-link">Bounties</a></li>
+      </ul>
+
+      <div id="nav-auth" class="nav-auth"></div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-bottom: 5rem;">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="eyebrow">TARGETED SQUADS</span>
+        <h1 class="page-title">Build Circles. Small teams, concrete goals.</h1>
+        <p class="page-subtitle">
+          Join or organize focused student squads capped at a fixed capacity with verifiable milestone roadmaps.
+        </p>
+      </div>
+      <div>
+        <button onclick="openCreateCircleModal()" class="btn btn-primary btn-md">+ Create Build Circle</button>
+      </div>
+    </div>
+
+    <!-- Toolbar Filters -->
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <input type="text" id="search-query" class="input-search" placeholder="Search circles by name, goal, or tech..." />
+
+        <select id="filter-status" class="select-filter">
+          <option value="">All Progress Statuses</option>
+          <option value="PLANNING">Planning Phase</option>
+          <option value="IN_PROGRESS">In Active Sprint</option>
+          <option value="TESTING">Testing & Hardening</option>
+          <option value="SHIPPED">Shipped to Production</option>
+        </select>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--ink-secondary);">
+        Squads strictly capped to prevent ghosting
+      </div>
+    </div>
+
+    <!-- Circles Grid -->
+    <div class="grid-2" id="circles-grid">
+      <!-- Injected by circles.js -->
+    </div>
+  </main>
+
+  <!-- Circle Details & Milestones Modal -->
+  <div id="modal-circle-details" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 680px;">
+      <div class="modal-header">
+        <span class="eyebrow" style="margin-bottom: 0;">BUILD CIRCLE BOARD</span>
+        <button class="btn-close" onclick="closeCircleDetailsModal()">×</button>
+      </div>
+      <div id="circle-details-content">
+        <!-- Injected by circles.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Circle Modal -->
+  <div id="modal-create-circle" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.35rem;">Form a Build Circle</h3>
+        <button class="btn-close" onclick="closeCreateCircleModal()">×</button>
+      </div>
+      <form id="form-create-circle" onsubmit="handleCreateCircleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Circle Name</label>
+          <input type="text" id="circle-name" class="form-control" placeholder="e.g. Distributed Consensus Engine, AI Audio Mixer" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Project Goal / Target Deliverable</label>
+          <textarea id="circle-projectGoal" class="form-control" rows="2" placeholder="Concrete deliverable to be completed (e.g. 'Ship a multi-track editor by end of semester')" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">General Description</label>
+          <textarea id="circle-desc" class="form-control" rows="2" placeholder="Background details, motivation, meeting frequency..."></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Technologies (comma separated)</label>
+            <input type="text" id="circle-tech" class="form-control" placeholder="Python, FastAPI, React..." required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Max Members (Capped)</label>
+            <input type="number" id="circle-maxMembers" class="form-control" min="2" max="10" value="4" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Open Positions / Roles Needed</label>
+          <input type="text" id="circle-openPositions" class="form-control" placeholder="e.g. 1 Backend Dev, 1 UI/UX Designer" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Initial Status</label>
+          <select id="circle-progressStatus" class="form-control">
+            <option value="PLANNING" selected>Planning Phase</option>
+            <option value="IN_PROGRESS">In Active Sprint</option>
+          </select>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+          <button type="button" onclick="closeCreateCircleModal()" class="btn btn-secondary btn-sm">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Create Circle</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/circles.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Bounty Board — NEXUS</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-symbol">N</div>
+        <span>NEXUS</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="/discover.html" class="nav-link">Discover</a></li>
+        <li><a href="/projects.html" class="nav-link">Projects</a></li>
+        <li><a href="/circles.html" class="nav-link">Build Circles</a></li>
+        <li><a href="/bounties.html" class="nav-link active">Bounties</a></li>
+      </ul>
+
+      <div id="nav-auth" class="nav-auth"></div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-bottom: 5rem;">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="eyebrow lime">PEER KNOWLEDGE EXCHANGE</span>
+        <h1 class="page-title">Skill Bounty Board</h1>
+        <p class="page-subtitle">
+          Stuck on a tricky bug or looking to review architectures? Post a non-monetary skill bounty and pair with a peer.
+        </p>
+      </div>
+      <div>
+        <button onclick="openCreateBountyModal()" class="btn btn-primary btn-md">+ Post Skill Bounty</button>
+      </div>
+    </div>
+
+    <!-- Toolbar Filters -->
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <input type="text" id="search-query" class="input-search" placeholder="Search bounties or technologies..." />
+
+        <select id="filter-type" class="select-filter">
+          <option value="">All Bounty Types</option>
+          <option value="DEBUGGING">Debugging Challenge</option>
+          <option value="CODE_REVIEW">Code Review</option>
+          <option value="PAIR_PROGRAMMING">Pair Programming</option>
+          <option value="LEARNING">Conceptual Learning</option>
+        </select>
+
+        <select id="filter-status" class="select-filter">
+          <option value="">All Statuses</option>
+          <option value="OPEN">Open for Helpers</option>
+          <option value="IN_PROGRESS">In Progress (Paired)</option>
+          <option value="COMPLETED">Completed</option>
+        </select>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--ink-secondary);">
+        100% Peer-to-Peer Knowledge Sharing
+      </div>
+    </div>
+
+    <!-- Bounties Grid -->
+    <div class="grid-3" id="bounties-grid">
+      <!-- Injected by bounties.js -->
+    </div>
+  </main>
+
+  <!-- Bounty Details Modal -->
+  <div id="modal-bounty-details" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 640px;">
+      <div class="modal-header">
+        <span class="eyebrow" style="margin-bottom: 0;">SKILL BOUNTY DETAILS</span>
+        <button class="btn-close" onclick="closeBountyDetailsModal()">×</button>
+      </div>
+      <div id="bounty-details-content">
+        <!-- Injected by bounties.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Bounty Modal -->
+  <div id="modal-create-bounty" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.35rem;">Post a Technical Challenge</h3>
+        <button class="btn-close" onclick="closeCreateBountyModal()">×</button>
+      </div>
+      <form id="form-create-bounty" onsubmit="handleCreateBountySubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Bounty Title</label>
+          <input type="text" id="bounty-title" class="form-control" placeholder="e.g. Help me debug Spring Security CSRF on Fetch API" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Detailed Description</label>
+          <textarea id="bounty-desc" class="form-control" rows="3" placeholder="Provide background context, error trace, or what you've tried..." required></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Specific Skill Needed</label>
+            <input type="text" id="bounty-skill" class="form-control" placeholder="e.g. Spring Boot, PyTorch, Docker" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Bounty Type</label>
+            <select id="bounty-type" class="form-control">
+              <option value="DEBUGGING" selected>Debugging</option>
+              <option value="CODE_REVIEW">Code Review</option>
+              <option value="PAIR_PROGRAMMING">Pair Programming</option>
+              <option value="LEARNING">Conceptual Learning</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+          <button type="button" onclick="closeCreateBountyModal()" class="btn btn-secondary btn-sm">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Post to Board</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/bounties.js"></script>
+</body>
+</html>

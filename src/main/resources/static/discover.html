@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Developers — NEXUS</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <div class="brand-symbol">N</div>
+        <span>NEXUS</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="/discover.html" class="nav-link active">Discover</a></li>
+        <li><a href="/projects.html" class="nav-link">Projects</a></li>
+        <li><a href="/circles.html" class="nav-link">Build Circles</a></li>
+        <li><a href="/bounties.html" class="nav-link">Bounties</a></li>
+      </ul>
+
+      <div id="nav-auth" class="nav-auth"></div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-bottom: 5rem;">
+    <div class="page-header">
+      <span class="eyebrow lime">DEVELOPER DIRECTORY</span>
+      <h1 class="page-title">Find your kind of builders.</h1>
+      <p class="page-subtitle">
+        Explore university developers with complementary skillsets, diagnose project chemistry, and form high-velocity teams.
+      </p>
+    </div>
+
+    <!-- Filters & Search Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <input type="text" id="search-query" class="input-search" placeholder="Search by name or interests..." />
+        
+        <select id="filter-skill" class="select-filter">
+          <option value="">All Technologies</option>
+        </select>
+
+        <input type="text" id="filter-college" class="input-search" placeholder="Filter by university..." style="min-width: 180px;" />
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--ink-secondary);">
+        Scored by deterministic <strong>Skill DNA</strong>
+      </div>
+    </div>
+
+    <!-- Developers Grid -->
+    <div class="grid-3" id="developers-grid">
+      <!-- Injected by discover.js -->
+    </div>
+  </main>
+
+  <!-- Skill Chemistry Modal -->
+  <div id="modal-chemistry" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="eyebrow lime" style="margin-bottom: 0;">PROJECT CHEMISTRY DIAGNOSTIC</span>
+        <button class="btn-close" onclick="closeChemistryModal()">×</button>
+      </div>
+      <div id="chemistry-modal-content">
+        <!-- Injected by discover.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/discover.js"></script>
+</body>
+</html>
