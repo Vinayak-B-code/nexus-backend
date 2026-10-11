@@ -20,7 +20,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
+      
     @GetMapping("/profile")
     public ResponseEntity<UserResponse> getMyProfile(Authentication authentication) {
         User user = userService.findByEmail(authentication.getName());
